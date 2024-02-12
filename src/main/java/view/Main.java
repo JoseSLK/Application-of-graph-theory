@@ -7,8 +7,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase principal que interactúa con el usuario para calcular la ruta más corta entre dos lugares.
+ */
 public class Main {
 
+    /**
+     * Método principal para ejecutar la aplicación.
+     *
+     * @param args Argumentos de la línea de comandos (no utilizados en esta aplicación).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         RouteManager routeManager = new RouteManager();
@@ -19,6 +27,7 @@ public class Main {
         System.out.println("Buenas......\nCalcularemos la ruta con menor congestion, para ello se lecciona de que lugar vas y hasta donde vas." +
                 "\nLugares:");
 
+        // Mostrar la lista de lugares disponibles para el usuario
         int i = 0;
         for ( String name: namePlaces.keySet()) {
             System.out.println((i+1) + ". "+ name);
@@ -26,6 +35,7 @@ public class Main {
         }
         i = 0;
 
+        // Solicitar al usuario que ingrese el lugar de inicio y el destino
         String id1 = "", id2 = "";
         do {
             System.out.print("Digita:");
@@ -58,6 +68,7 @@ public class Main {
             }
         }while (i <= 1);
 
+        // Calcular y mostrar la ruta más corta entre los lugares seleccionados
         System.out.println("La ruta más rápida es:");
         List<String> route = routeManager.shortestRoute(id1, id2);
         if (route != null) {
